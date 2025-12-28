@@ -97,10 +97,20 @@ npm run dev
 
 ## API overview
 
+### Authentication
+- `POST /api/auth/signup` – create new user account
+- `POST /api/auth/login` – login with email and password
+- `POST /api/auth/verify` – verify email with token
+- `POST /api/auth/forgot` – request password reset
+- `POST /api/auth/reset` – reset password with token
+
+### Sounds
 - `POST /api/sounds` – create sound
 - `GET /api/sounds` – list sounds
 - `PATCH /api/sounds/:id` – update sound
 - `DELETE /api/sounds/:id` – delete sound
+
+### Training & Inference
 - `POST /api/train/sample` – upload clip + label; stores embedding
 - `POST /api/train/rebuild` – rebuild user classifier
 - `POST /api/infer` – classify a chunk
