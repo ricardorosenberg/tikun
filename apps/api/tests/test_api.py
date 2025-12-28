@@ -52,9 +52,7 @@ def test_signup_duplicate_email():
 
 def test_login():
     client.post("/api/auth/signup", json={"email": "test3@example.com", "password": "Password123"})
-    # Verify email first
-    response = client.post("/api/auth/verify", data={"token": "dummy"})  # Will fail
-    # Login should fail for unverified
+    # Login should fail for unverified user
     response = client.post("/api/auth/login", json={"email": "test3@example.com", "password": "Password123"})
     assert response.status_code == 403
 
