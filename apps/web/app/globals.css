@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-white text-slate-900 antialiased;
+}
+
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-tikun-500 focus:ring-offset-2;
+}
+
+.tikun-card {
+  @apply rounded-3xl border border-slate-200 bg-white shadow-soft;
+}
+
+.tikun-input {
+  @apply w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm focus:border-tikun-500 focus:outline-none focus:ring-2 focus:ring-tikun-500/30;
+}
+
+.tikun-button {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-tikun-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-tikun-700 focus:outline-none focus:ring-2 focus:ring-tikun-500 focus:ring-offset-2;
+}
+
+.tikun-button-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-tikun-500 focus:ring-offset-2;
+}
+
+.flash-overlay {
+  animation: flash 1.2s ease-in-out;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+  }
+}
