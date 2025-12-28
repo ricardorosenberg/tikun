@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends, HTTPException, UploadFile, File, Form, status
+from fastapi import FastAPI, Depends, HTTPException, UploadFile, File, Form, status, Request
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from slowapi import Limiter
@@ -214,6 +214,7 @@ async def rebuild(current_user: User = Depends(get_current_user), db: Session = 
 @app.post("/api/infer", response_model=PredictionOut)
 @limiter.limit(f"{settings.rate_limit_per_minute}/minute")
 async def infer(
+    request: Request,
     file: UploadFile = File(...),
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
