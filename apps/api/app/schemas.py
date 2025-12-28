@@ -1,5 +1,6 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, field_serializer
 from typing import Optional, List
+from datetime import datetime
 
 
 class UserCreate(BaseModel):
@@ -51,7 +52,11 @@ class DetectionOut(BaseModel):
     user_id: str
     sound_id: Optional[str]
     confidence: float
-    created_at: str
+    created_at: datetime
+
+    @field_serializer('created_at')
+    def serialize_created_at(self, dt: datetime, _info):
+        return dt.isoformat()
 
     class Config:
         from_attributes = True
